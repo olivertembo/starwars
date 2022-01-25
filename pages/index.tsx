@@ -1,13 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Page from "../src/layout/Page";
+import Search from "../src/components/Search";
+import { Typography } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <Page>
+      <Typography sx={{ textAlign: "center" }} variant="h4">
+        STARWARS UNIVERSE
+      </Typography>
+      <Search
+        value={`Hello World`}
+        placeholder="search companies"
+        location="/user/companies"
+      />
+    </Page>
   );
 };
 
