@@ -1,32 +1,26 @@
 import { createTheme } from "@mui/material/styles";
 
-const font = "font-family: 'Roboto', sans-serif;";
-const fontSize = 14;
-
+const font = "'Poppins', sans-serif";
+const fontSize = 28;
+const colorPrimary = "#8c8d9e";
 const theme = createTheme({
   components: {
     MuiButton: {
-        // fontFamily: font,
-        // fontSize: fontSize,
-        // textTransform: "none",
-        // fontWeight: "normal",
-        // letterSpacing: "0.5px",
-        // color: "#fff",
-        // backgroundColor: "#00bcd4",
-        // "&:hover": {
-        //   backgroundColor: "#00acc1",
-        // },
-        // "&:disabled": {
-        //   backgroundColor: "#00acc1",
-        // },
+      defaultProps: {
+        variant: "contained",
+        color: "primary",
+        size: "large",
+        fullWidth: false,
+        disableElevation: true,
+      },
     },
   },
   palette: {
     primary: {
-      main: "#00bcd4",
+      main: colorPrimary,
     },
     secondary: {
-      main: "#ff4081",
+      main: "#FBC638",
     },
     error: {
       main: "#f44336",

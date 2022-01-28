@@ -8,6 +8,7 @@ import useFetch from "../src/hooks/useFetch";
 import { SWAPI_API_PEOPLE } from "../src/services/api";
 import CardContainer from "../src/components/CardContainer";
 import ListContainer from "../src/components/ListContainer";
+import Loading from "../src/components/Loading";
 
 const Home: NextPage = () => {
   // Fetch data from the server
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
   }
   console.log(data);
 
-  if (!data) return <p>Loading...</p>;
+  if (!data) return <Loading />;
 
   return (
     <Page>
@@ -28,11 +29,12 @@ const Home: NextPage = () => {
       </Typography>
       <Search value={``} placeholder="search..." location="/user/companies" />
 
-      loading
       <ListContainer>
-      <Stack spacing={2}>
-        <CardContainer />
-      </Stack>
+        <Loading />
+        <Stack spacing={3}>
+          <CardContainer />
+          <CardContainer />
+        </Stack>
       </ListContainer>
     </Page>
   );

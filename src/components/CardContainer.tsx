@@ -4,11 +4,11 @@ import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import CustomButton from "./CustomButton";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  padding: theme.spacing(3),
   textAlign: "left",
   backgroundColor: "rgba(255, 255, 255, .15)",
   backdropFilter: "blur(2px)",
@@ -29,7 +29,7 @@ export default function CardContainer() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <CustomButton>MORE</CustomButton>
       </CardActions>
     </StyledCard>
   );
