@@ -12,11 +12,11 @@ export default function Search({
     placeholder = "Search",
 }: SearchProps) {
     const [searchValue, setSearchValue] = useState(value);
-
     const [progressValue, setProgressValue] = useState<boolean>(false);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value);
+        console.log(event.target.value);
     };
 
     const handleSubmit = (event: React.FormEvent) => {
@@ -25,8 +25,6 @@ export default function Search({
         //set progress to true
         setProgressValue(true);
         // Call the Search hook
-
-
     };
 
     return (

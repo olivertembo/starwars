@@ -1,9 +1,6 @@
-import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
-//import backgroundImage from './src/assets/images/background.png';
-import Image from "next/image";
-import Container from "@mui/material/Container";
 import React from "react";
+import { Box } from "@mui/material";
+import Container from "@mui/material/Container";
 
 interface Props {
   children: React.ReactNode;
@@ -24,10 +21,3 @@ export default function Page({ children }: Props) {
     </Box>
   );
 }
-
-const styledBox = styled(Box)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
