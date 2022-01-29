@@ -11,9 +11,11 @@ export default function Page({ children }: Props) {
       sx={{
         backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 36%), rgb(0 0 0 / 36%)), url("/assets/images/background.png")`,
         backgroundColor: "#000",
-        height: "100vh",
         backgroundSize: "cover",
+        minHeight: "100vh",
         padding: "30px 0",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
       }}
     >
       {" "}

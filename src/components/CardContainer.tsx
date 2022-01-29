@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -15,21 +16,37 @@ const StyledCard = styled(Card)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function CardContainer() {
+interface CardContainerProps {
+  id: number;
+  name: string;
+  height: string;
+  mass: string;
+  url: string;
+}
+
+export default function CardContainer({
+  id,
+  name,
+  height,
+  mass,
+}: CardContainerProps) {
   return (
     <StyledCard sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography variant="h5" component="div">
-          Lucas Skywalker
+          {name}
         </Typography>
         <Typography variant="body2">
-          well meaning and kindly.
+          height: {height}
           <br />
-          {'"a benevolent smile"'}
+          mass: {mass}
+          <br />
         </Typography>
       </CardContent>
       <CardActions>
-        <CustomButton>MORE</CustomButton>
+        <Link href={`/people/${id}`} passHref>
+          <CustomButton>MORE</CustomButton>
+        </Link>
       </CardActions>
     </StyledCard>
   );

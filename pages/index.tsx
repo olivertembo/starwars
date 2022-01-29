@@ -12,8 +12,14 @@ import Loading from "../src/components/Loading";
 
 const Home: NextPage = () => {
   // Fetch data from the server
-  const { data, error } = useFetch(SWAPI_API_PEOPLE);
+  const { data, error } = useFetch<People>(SWAPI_API_PEOPLE);
   const [loading, setLoading] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+    console.log(event.target.value);
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -27,13 +33,28 @@ const Home: NextPage = () => {
       <Typography sx={{ textAlign: "center" }} variant="h4">
         STARWARS PEOPLE
       </Typography>
-      <Search value={``} placeholder="search..." location="/user/companies" />
+      <Search
+        value={searchValue}
+        placeholder="search..."
+        location="/user/companies"
+        onChange={onChange}
+      />
 
       <ListContainer>
         <Loading />
         <Stack spacing={3}>
-          <CardContainer />
-          <CardContainer />
+          {!data && <Loading />}
+
+          {data.results.map((person: Person, index) => (
+            <CardContainer
+              key={person.url}
+              id={index + 1}
+              name={person.name}
+              height={person.height}
+              mass={person.mass}
+              url={person.url}
+            />
+          ))}
         </Stack>
       </ListContainer>
     </Page>
