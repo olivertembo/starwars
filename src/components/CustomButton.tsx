@@ -3,12 +3,13 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 interface Props {
-  children: React.ReactNode;
+  text?: string;
+  href?: string;
 }
-export default function CustomButton({ children, ...props }: Props) {
+const CustomButton = React.forwardRef(({ text, href }: Props, ref) => {
   return (
-    <StyledButton {...props}>
-      <span>{children}</span>
+    <StyledButton ref={ref}>
+      <span>{text}</span>
       <span>
         <svg
           width="66px"
@@ -45,7 +46,8 @@ export default function CustomButton({ children, ...props }: Props) {
       </span>
     </StyledButton>
   );
-}
+});
+export default CustomButton;
 
 const StyledButton = styled(Button)(({ theme }) => ({
   display: "flex",

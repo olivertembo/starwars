@@ -58,15 +58,6 @@ const Home: NextPage = () => {
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
-    console.log(event.target.value);
-    // get people from api search
-    // fetch results from api
-    // fetch("https://swapi.dev/api/people/?search=" + event.target.value)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setResults(data);
-    //   });
   };
 
   const handleFetchMore = () => {
