@@ -11,6 +11,7 @@ import CardContainer from "../../src/components/CardContainer";
 import ListContainer from "../../src/components/ListContainer";
 import Loading from "../../src/components/Loading";
 import Link from "next/link";
+import Profile from "../../src/components/Profile";
 
 const Person: NextPage = () => {
   const router = useRouter();
@@ -20,18 +21,11 @@ const Person: NextPage = () => {
   return (
     <Page>
       <h1>Person: {id}</h1>
-      <ul>
-        <li>
-          <Link href="/post/[id]/[comment]" as={`/post/${id}/first-comment`}>
-            <a>First comment</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/post/[id]/[comment]" as={`/post/${id}/second-comment`}>
-            <a>Second comment</a>
-          </Link>
-        </li>
-      </ul>
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+
+      <Profile name="Luke Skywalker" height="172" mass="77" id={2} url="sdf" />
     </Page>
   );
 };
