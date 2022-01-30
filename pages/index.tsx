@@ -19,27 +19,35 @@ const Home: NextPage = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
+  const [pagination, setPagination] = useState({
+    previous: false,
+    previousURL: "",
+    nextURL: "",
+    next: false,
+  });
 
-  const debouncedSearchQuery = useDebounce(query, 500);
+  const debouncedSearchQuery = useDebounce(query, 300);
 
   const searchFromAPI: any = async (q: string) => {
     setIsSearching(true);
     setData([]);
     setError("");
     try {
-      // const response = await fetch("https://swapi.dev/api/people/?search=" + q);
-      // const data = await response.json();
-      // setData(data.results);
-      // setIsSearching(false);
-
       // fetch results from api
       fetch("https://swapi.dev/api/people/?search=" + q)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          //setResults(data);
+          console.log("Here is what I am looking for");
           setData(data.results);
           setIsSearching(false);
+          setPagination({
+            ...pagination,
+            previous: data.previous !== null,
+            previousURL: data.previous,
+            nextURL: data.next,
+            next: data.next !== null,
+          });
         });
     } catch (error) {
       console.log("eee");
@@ -63,7 +71,20 @@ const Home: NextPage = () => {
 
   const handleFetchMore = () => {
     setLoading(true);
-    console.log("fetching more");
+    if (pagination.next && pagination.nextURL) {
+      const nextURL = pagination.nextURL.split("search=")[1];
+      setSearchQuery(nextURL);
+      setSearchQuery(nextURL);
+
+    }
+  };
+
+  const handlePrevious = () => {
+    setLoading(true);
+    if (pagination.previous && pagination.previousURL) {
+      const previousURL = pagination.previousURL.split("search=")[1];
+      setSearchQuery(previousURL);
+    }
   };
 
   useEffect(() => {
@@ -82,8 +103,6 @@ const Home: NextPage = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
-  console.log(data);
 
   return (
     <Page>
@@ -114,26 +133,13 @@ const Home: NextPage = () => {
             ))}
         </Stack>
         {data && (
-          <Box
-            sx={{ dispaly: "block", textAlign: "center", marginTop: "10px" }}
-          >
-            <Button
-              onClick={handleFetchMore}
-              disabled={true}
-              sx={{ margin: "0 10px" }}
-            >
-              Previous
-            </Button>
-            <Button onClick={handleFetchMore} disabled={false}>
-              Next
-            </Button>
-          </Box>
+          <Pagination
+            previous={pagination.previous}
+            next={pagination.next}
+            handlePrevious={handlePrevious}
+            handleNext={handleFetchMore}
+          />
         )}
-        <Pagination previous={false}
-  next={false}
-  handlePrevious={handleFetchMore} 
-  handleNext={handleFetchMore}
-  />
       </ListContainer>
     </Page>
   );

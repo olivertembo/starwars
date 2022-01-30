@@ -66,7 +66,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     transition: "0.5s",
     boxShadow: `10px 10px 0 ${theme.palette.secondary.main}`,
   },
-  "& span:nth-child(2)": {
+  "& span:nth-of-type(2)": {
     transition: "0.5s",
     marginRight: "0px",
     width: "20px",
@@ -74,7 +74,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     position: "relative",
     top: "12%",
   },
-  "&:hover span:nth-child(2)": {
+  "&:hover span:nth-of-type(2)": {
     transition: "0.5s",
     marginRight: "45px",
   },

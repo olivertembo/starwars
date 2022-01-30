@@ -24,11 +24,16 @@ export default function Pagination({
     <StyledPagination>
       <Button
         onClick={handlePrevious}
-        disabled={previous}
+        disabled={!previous}
+        className="pagination-button"
       >
         {previousText}
       </Button>
-      <Button onClick={handleNext} disabled={next}>
+      <Button
+        onClick={handleNext}
+        disabled={!next}
+        className="pagination-button"
+      >
         {nextText}
       </Button>
     </StyledPagination>
@@ -39,7 +44,7 @@ const StyledPagination = styled(Box)({
   dispaly: "block",
   textAlign: "center",
   marginTop: "10px",
-  "&.MuiButton-root": {
-    margin: "0 10px" 
-  }
+  "& .pagination-button": {
+    margin: "0 10px",
+  },
 });
