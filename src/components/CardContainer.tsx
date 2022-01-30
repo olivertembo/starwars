@@ -44,7 +44,7 @@ export default function CardContainer({
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href={`/people/${id}`} passHref>
+        <Link href={`/people/1`} passHref>
           <CustomButton text="MORE" ></CustomButton>
         </Link>
       </CardActions>

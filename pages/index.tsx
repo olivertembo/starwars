@@ -3,8 +3,7 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import Page from "../src/layout/Page";
 import Search from "../src/components/Search";
-import { Button, Stack, Typography, Box } from "@mui/material";
-import useFetch from "../src/hooks/useFetch";
+import { Stack, Typography } from "@mui/material";
 import { SWAPI_API_PEOPLE } from "../src/services/api";
 import CardContainer from "../src/components/CardContainer";
 import ListContainer from "../src/components/ListContainer";
@@ -34,11 +33,9 @@ const Home: NextPage = () => {
     setError("");
     try {
       // fetch results from api
-      fetch("https://swapi.dev/api/people/?search=" + q)
+      fetch(`${SWAPI_API_PEOPLE}?search=${q}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          console.log("Here is what I am looking for");
           setData(data.results);
           setIsSearching(false);
           setPagination({
@@ -75,7 +72,6 @@ const Home: NextPage = () => {
       const nextURL = pagination.nextURL.split("search=")[1];
       setSearchQuery(nextURL);
       setSearchQuery(nextURL);
-
     }
   };
 
