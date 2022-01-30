@@ -39,7 +39,7 @@ const StyledPagination = styled(Box)({
   dispaly: "block",
   textAlign: "center",
   marginTop: "10px",
-  "&.button": {
+  "&.MuiButton-root": {
     margin: "0 10px" 
   }
 });

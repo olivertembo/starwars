@@ -10,6 +10,7 @@ import CardContainer from "../src/components/CardContainer";
 import ListContainer from "../src/components/ListContainer";
 import Loading from "../src/components/Loading";
 import useDebounce from "../src/hooks/useDebounce";
+import Pagination from "../src/components/Pagination";
 
 const Home: NextPage = () => {
   const [results, setResults] = useState<People | null>(null);
@@ -128,6 +129,11 @@ const Home: NextPage = () => {
             </Button>
           </Box>
         )}
+        <Pagination previous={false}
+  next={false}
+  handlePrevious={handleFetchMore} 
+  handleNext={handleFetchMore}
+  />
       </ListContainer>
     </Page>
   );
