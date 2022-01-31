@@ -10,6 +10,7 @@ import ListContainer from "../src/components/ListContainer";
 import Loading from "../src/components/Loading";
 import useDebounce from "../src/hooks/useDebounce";
 import Pagination from "../src/components/Pagination";
+import { AppContext } from "../src/contexts/AppContext";
 
 const Home: NextPage = () => {
   const [results, setResults] = useState<People | null>(null);
@@ -120,7 +121,6 @@ const Home: NextPage = () => {
             data.map((person: Person, index) => (
               <CardContainer
                 key={person.url}
-                id={index + 1}
                 name={person.name}
                 height={person.height}
                 mass={person.mass}

@@ -28,3 +28,14 @@ interface People {
     next_page: string;
   };
 }
+
+interface App {
+  people: People;
+  query: string;
+  loading: boolean;
+}
+
+interface AppContextInterface {
+  appData: App;
+  setAppData: (appData: App) => void;
+}

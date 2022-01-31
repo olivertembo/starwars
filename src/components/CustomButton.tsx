@@ -5,10 +5,11 @@ import { styled } from "@mui/material/styles";
 interface Props {
   text?: string;
   href?: string;
+  ref?: any;
 }
-const CustomButton = React.forwardRef(({ text, href }: Props, ref) => {
+const CustomButton = ({ text, href,ref }: Props) => {
   return (
-    <StyledButton ref={ref}>
+    <StyledButton ref={ref} href={href}>
       <span>{text}</span>
       <span>
         <svg
@@ -46,7 +47,7 @@ const CustomButton = React.forwardRef(({ text, href }: Props, ref) => {
       </span>
     </StyledButton>
   );
-});
+};
 export default CustomButton;
 
 const StyledButton = styled(Button)(({ theme }) => ({

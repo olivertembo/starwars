@@ -6,31 +6,21 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CustomButton from "./CustomButton";
-import CustomeButton1 from "./CustomButton1"
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(3),
-  textAlign: "left",
-  backgroundColor: "rgba(255, 255, 255, .15)",
-  backdropFilter: "blur(2px)",
-  color: theme.palette.text.secondary,
-}));
-
-interface CardContainerProps {
-  id: number;
-  name: string;
-  height: string;
-  mass: string;
-  url: string;
-}
 
 export default function CardContainer({
-  id,
   name,
   height,
   mass,
+  url,
 }: CardContainerProps) {
+  // get last value of url as int
+  const idFromUrl = url.split("people/").pop();
+  let personID = null;
+
+  if (idFromUrl) {
+    personID = parseInt(idFromUrl) ?? null;
+  }
+
   return (
     <StyledCard sx={{ minWidth: 275 }}>
       <CardContent>
@@ -42,15 +32,32 @@ export default function CardContainer({
           <br />
           mass: {mass}
           <br />
+          url: {url}
+          <br />
+          ID: {personID}
         </Typography>
       </CardContent>
       <CardActions>
-        <CustomeButton1 />
-        <Link href={`/people/1`} passHref>
-          <CustomButton text="MORE" ></CustomButton>
+        <Link href={`/people/${personID}`} passHref>
+          <CustomButton text={`MORE`}></CustomButton>
         </Link>
-        
       </CardActions>
     </StyledCard>
   );
+}
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(3),
+  textAlign: "left",
+  backgroundColor: "rgba(255, 255, 255, .15)",
+  backdropFilter: "blur(2px)",
+  color: theme.palette.text.secondary,
+}));
+
+interface CardContainerProps {
+  name: string;
+  height: string;
+  mass: string;
+  url: string;
 }
