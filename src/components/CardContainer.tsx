@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CustomButton from "./CustomButton";
+import CustomeButton1 from "./CustomButton1"
 
 const StyledCard = styled(Card)(({ theme }) => ({
   ...theme.typography.body2,
@@ -44,9 +45,11 @@ export default function CardContainer({
         </Typography>
       </CardContent>
       <CardActions>
+        <CustomeButton1 />
         <Link href={`/people/1`} passHref>
           <CustomButton text="MORE" ></CustomButton>
         </Link>
+        
       </CardActions>
     </StyledCard>
   );
